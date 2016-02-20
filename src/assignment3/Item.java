@@ -3,6 +3,11 @@ package assignment3;
 public class Item 
 {
 //Declare variables for this class. Think about its type: public, protected or private?
+	String name;
+	protected double price;
+	protected int quantity;
+	protected double weight;
+	
 
 // You will need a constructor (Why?). Create it here.
 	
