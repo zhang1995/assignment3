@@ -1,21 +1,14 @@
 package assignment3;
 
-public class Clothing extends Item 
-{
+public class Clothing extends Item {
 
 	// variables, constructors as necessary
-	
-	float calculatePrice () 
-	{
-		float final_price = 0;
-		// Insert price calculation here
-		return final_price;
+	public Clothing() {
+		super();
 	}
-	
-	void printItemAttributes () 
-	{
-		//Print all applicable attributes of this sub-class
+
+	public Clothing(String n, double p, int q, double w) {
+		super(n,p,q,w);
 	}
-	
 
 }
