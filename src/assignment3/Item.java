@@ -1,8 +1,12 @@
 package assignment3;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class Item {
 	
 	private double tax = 0.1;
+	static NumberFormat df = new DecimalFormat("#0.00");
 	
 	// Declare variables for this class. Think about its type: public, protected
 	// or private?
@@ -36,13 +40,15 @@ public class Item {
 		double final_price = 0;
 		// Insert price calculation here
 		double standard_shipping = (20*weight)*quantity;
-		double price_after_tax = (price*quantity)*(1+tax);
-		final_price = price_after_tax + standard_shipping;
+		double item_price = (price*quantity)*(1+tax);
+		final_price = item_price + standard_shipping;
 		return final_price;
 	}
 
 	void printItemAttributes() {
 		// Print all applicable attributes of this class
+		System.out.format("Item: %s\n" + "Price: %d\n" + "Quantity: %d\n" + "Weight: %d\n" + "Total Price: %d\n", 
+				name, price, quantity, weight, calculatePrice());
 	}
 
 }
