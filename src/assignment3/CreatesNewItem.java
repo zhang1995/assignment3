@@ -45,23 +45,61 @@ public class CreatesNewItem {
 			throw new Exception("Incorrect Weight Input");
 		}
 		String category = transaction[1].toLowerCase();
-		//implement item base on category
-		switch(category) {
-			
+		// implement item base on category
+		switch (category) {
+
 		case "clothing":
-			//clothing transaction contains 6 elements
-			if(transaction.length != 7) {
+			// clothing transaction contains 6 elements
+			if (transaction.length != 6) {
 				throw new Exception("Incorrect Transaction for Clothing");
 			}
 			return new Clothing(name, price, quantity, weight);
-			
+
 		case "groceries":
-			//clothing transaction contains 7 elements
-			
-			
+			// grocery transaction contains 7 elements
+			if (transaction.length != 7) {
+				throw new Exception("Incorrect Transaction for Grocery");
+			}
+			String perishable = transaction[6].toUpperCase();
+			boolean is_perishable;
+			switch (perishable) {
+			case "NP":
+				is_perishable = false;
+				break;
+
+			case "P":
+				is_perishable = true;
+				break;
+
+			default:
+				throw new Exception("Incorrect Optional Input");
+			}
+			return new Grocery(name, price, quantity, weight, is_perishable);
 		case "electronics":
-		
+			// grocery transaction contains 8 elements
+			if (transaction.length != 8) {
+				throw new Exception("Incorrect Transaction for Electronics");
+			}
+			boolean is_fragile;
+			String state = transaction[7].toUpperCase();
+			String fragile = transaction[6].toUpperCase();
+			switch (fragile) {
 			
+			case "NF":
+				is_fragile = false;
+				break;
+				
+			case "F":
+				is_fragile = true;
+				break;
+				
+			default:
+				throw new Exception("Incorrect Optional Input");
+		
+			}
+
+			return new Electronics(name, price, quantity, weight, is_fragile, state);
+		
 		default:
 			throw new Exception("Incorrect Category Name");
 		}

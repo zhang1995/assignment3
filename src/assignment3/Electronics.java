@@ -16,8 +16,8 @@ public class Electronics extends Item {
 	public Electronics(String name, double price, int quantity, int weight, boolean fragile, String state) throws Exception {
 		super(name, price, quantity, weight);
 		this.is_fragile = fragile;
-		if (Arrays.asList(us_states).contains(state.toUpperCase())) {
-			this.state = state.toUpperCase();
+		if (Arrays.asList(us_states).contains(state)) {
+			this.state = state;
 		} else {
 			throw new Exception("Incorrect State Name!!!");
 		}
