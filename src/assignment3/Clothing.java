@@ -7,7 +7,7 @@ public class Clothing extends Item {
 		super();
 	}
 
-	public Clothing(String name, double price, int quantity, double weight) {
+	public Clothing(String name, double price, int quantity, int weight) {
 		super(name,price,quantity,weight);
 	}
 

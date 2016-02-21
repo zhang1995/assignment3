@@ -13,11 +13,11 @@ public class Electronics extends Item {
 	protected String state;
 
 	// Variables, constructors etc. here.
-	public Electronics(String n, double p, int q, double w, boolean f, String s) throws Exception {
-		super(n, p, q, w);
-		this.is_fragile = f;
-		if (Arrays.asList(us_states).contains(s.toUpperCase())) {
-			this.state = s.toUpperCase();
+	public Electronics(String name, double price, int quantity, int weight, boolean fragile, String state) throws Exception {
+		super(name, price, quantity, weight);
+		this.is_fragile = fragile;
+		if (Arrays.asList(us_states).contains(state.toUpperCase())) {
+			this.state = state.toUpperCase();
 		} else {
 			throw new Exception("Incorrect State Name!!!");
 		}
@@ -47,7 +47,7 @@ public class Electronics extends Item {
 
 	void printItemAttributes() {
 		
-		System.out.format("Item: %s\n" + "Price: %d\n" + "Quantity: %d\n" + "Weight: %d\n" +"Is_Fragile: %b\n"+"State: %s\n"+"Total Price: %d\n", 
+		System.out.format("Item: %s\n" + "Price: $%d\n" + "Quantity: %d\n" + "Weight: %d\n" +"Is_Fragile: %b\n"+"State: %s\n"+"Total Price: $%d\n", 
 				name, price, quantity, weight, is_fragile, state, calculatePrice());
 	}
 

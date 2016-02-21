@@ -5,7 +5,7 @@ public class Grocery extends Item {
 	// variables, constructor here
 	protected boolean is_perishable;
 
-	public Grocery(String name, double price, int quantity, double weight, boolean is_perishable) {
+	public Grocery(String name, double price, int quantity, int weight, boolean is_perishable) {
 		super(name, price, quantity, weight);
 		this.is_perishable = is_perishable;
 	}
@@ -27,7 +27,7 @@ public class Grocery extends Item {
 	
 void printItemAttributes() {
 		
-		System.out.format("Item: %s\n" + "Price: %d\n" + "Quantity: %d\n" + "Weight: %d\n" +"Is_Perishable: %b\n" + "Total Price: %d\n", 
+		System.out.format("Item: %s\n" + "Price: $%d\n" + "Quantity: %d\n" + "Weight: %d\n" +"Is_Perishable: %b\n" + "Total Price: $%d\n", 
 				name, price, quantity, weight, is_perishable, calculatePrice());
 	}
 

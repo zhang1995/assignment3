@@ -13,7 +13,7 @@ public class Item {
 	String name;
 	protected double price;
 	protected int quantity;
-	protected double weight;
+	protected int weight;
 
 	// You will need a constructor (Why?). Create it here.
 	public Item() {
@@ -23,11 +23,11 @@ public class Item {
 		weight = 0;
 	}
 
-	public Item(String n, double p, int q, double w) {
-		name = n;
-		price = p;
-		quantity = q;
-		weight = w;
+	public Item(String name, double price, int quantity, int weight) {
+		this.name = name;
+		this.price = price;
+		this.quantity = quantity;
+		this.weight = weight;
 	}
 
 	//
@@ -47,7 +47,7 @@ public class Item {
 
 	void printItemAttributes() {
 		// Print all applicable attributes of this class
-		System.out.format("Item: %s\n" + "Price: %d\n" + "Quantity: %d\n" + "Weight: %d\n" + "Total Price: %d\n", 
+		System.out.format("Item: %s\n" + "Price: $%d\n" + "Quantity: %d\n" + "Weight: %d\n" + "Total Price: $%d\n", 
 				name, price, quantity, weight, calculatePrice());
 	}
 
