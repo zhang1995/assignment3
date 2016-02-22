@@ -55,7 +55,7 @@ public class Item {
 
 	void printItemAttributes() {
 		// Print all applicable attributes of this class
-		System.out.format("Item: %s\n" + "Price: $%d\n" + "Quantity: %d\n" + "Weight: %d\n" + "Total Price: $%d\n", 
+		System.out.format("Item: %s\n" + "Price: $%f\n" + "Quantity: %d\n" + "Weight: %d\n" + "Total Price: $%f\n\n", 
 				name, price, quantity, weight, calculatePrice());
 	}
 

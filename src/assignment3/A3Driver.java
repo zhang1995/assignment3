@@ -34,8 +34,8 @@ public class A3Driver {
 			System.out.println("Unable to open file: " + fileName);
 		} catch (IOException ex) {
 			System.out.println("Error reading file: " + fileName);
-		} catch (Exception e) {
-			System.out.println("Error: " + e.getMessage());
+		}catch (Exception e) {
+			System.err.println("Error: " + e.getMessage());
 		}
 		/*
 		 * // General code example for how to iterate an array list. You will
@@ -60,27 +60,32 @@ public class A3Driver {
 		// convert the input to an String array
 		String[] transaction = input.toLowerCase().split(" ");
 		// process base on the operation
-		switch (transaction[0]) {
-
-		case "insert":
-			insert(transaction);
-			break;
-		case "delete":
-			delete(transaction);
-			break;
-		case "serach":
-			search(transaction);
-			break;
-		case "update":
-			update(transaction);
-			break;
-		case "print":
-			print(transaction);
-			break;
-		default:
-			throw new Exception("Incorrect Operation Input");
+		try{
+			switch (transaction[0]) {
+	
+			case "insert":
+				insert(transaction);
+				return;
+			case "delete":
+				delete(transaction);
+				return;
+			case "search":
+				search(transaction);
+				return;
+			case "update":
+				update(transaction);
+				return;
+			case "print":
+				print(transaction);
+				return;
+			default:
+				throw new Exception("Incorrect Operation Input");
+			}
+		} catch (Exception e){
+			System.err.println("Error: " + e.getMessage());
 		}
-		return;
+			
+		
 	}
 
 	public static void insert(String[] transaction) throws Exception {
@@ -95,7 +100,7 @@ public class A3Driver {
 		if (transaction.length != 2) {
 			throw new Exception("Incorrect transaction length");
 		}
-		String name = transaction[2];
+		String name = transaction[1];
 		Iterator<Item> i = shoppingCart.iterator();
 		while (i.hasNext()) {
 			Item temp = i.next();
@@ -112,7 +117,7 @@ public class A3Driver {
 		if (transaction.length != 2) {
 			throw new Exception("Incorrect transaction length");
 		}
-		String name = transaction[2];
+		String name = transaction[1];
 		Iterator<Item> i = shoppingCart.iterator();
 		while (i.hasNext()) {
 			Item temp = i.next();
@@ -128,23 +133,29 @@ public class A3Driver {
 		if (transaction.length != 3) {
 			throw new Exception("Incorrect transaction length");
 		}
-		String name = transaction[2];
+		String name = transaction[1];
 		int quantity = 0;
-		if (transaction[3].matches("[0-9]")) {
-			quantity = Integer.parseInt(transaction[4]);
+		if (transaction[2].matches("[0-9]+")) {
+			quantity = Integer.parseInt(transaction[2]);
 		} else {
 			throw new Exception("Incorrect Quantity Input");
 		}
+		boolean succeed = false;
 		while (i.hasNext()) {
 			Item temp = i.next();
 			if (name.equals(temp.getName())) {
 				temp.update_quantity(quantity);
+				succeed = true;
 			}
 		}
-		System.out.println("Set " + name + "'s quantity to " + quantity + ".");
+		if(succeed){
+			System.out.println("Set " + name + "'s quantity to " + quantity + ".");
+		}else {
+			System.out.println("Can't find the item!");
+		}
 	}
 
-	public static void print(String[] transaction) throws Exception{
+	public static void print(String[] transaction) throws Exception {
 		double sum = 0;
 		Iterator<Item> i = shoppingCart.iterator();
 		while (i.hasNext()) {

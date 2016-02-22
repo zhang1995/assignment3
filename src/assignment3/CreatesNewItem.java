@@ -27,19 +27,19 @@ public class CreatesNewItem {
 		}
 		name = transaction[2].toLowerCase();
 		// check price
-		if (Pattern.matches(doublenumber, transaction[3]) || transaction[3].matches("[0-9]")) {
+		if (Pattern.matches(doublenumber, transaction[3]) || transaction[3].matches("[0-9]+")) {
 			price = (double) Double.parseDouble(transaction[3]);
 		} else {
 			throw new Exception("Incorrect Price Input");
 		}
 		// check quantity
-		if (transaction[4].matches("[0-9]")) {
+		if (transaction[4].matches("[0-9]+")) {
 			quantity = Integer.parseInt(transaction[4]);
 		} else {
 			throw new Exception("Incorrect Quantity Input");
 		}
 		// check weight
-		if (Pattern.matches(wholenumber, transaction[5]) || transaction[5].matches("[0-9]")) {
+		if (Pattern.matches(wholenumber, transaction[5]) || transaction[5].matches("[0-9]+")) {
 			weight = Integer.parseInt(transaction[5]);
 		} else {
 			throw new Exception("Incorrect Weight Input");
