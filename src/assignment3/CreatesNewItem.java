@@ -14,13 +14,13 @@ public class CreatesNewItem {
 	 *            exception
 	 * @return
 	 */
-	public Item generate_new_item(String[] transaction) throws Exception {
+	public static Item generate_new_item(String[] transaction) throws Exception {
 		// Declare varibles
 		String name = null;
 		double price = 0;
 		int quantity = 0;
 		int weight = 0;
-
+		
 		// check the validility of the transaction
 		if (transaction.length < 6) {
 			throw new Exception("Incorrect Number of Elements In The Transaction");
@@ -95,13 +95,13 @@ public class CreatesNewItem {
 				
 			default:
 				throw new Exception("Incorrect Optional Input");
-		
 			}
 
 			return new Electronics(name, price, quantity, weight, is_fragile, state);
 		
 		default:
 			throw new Exception("Incorrect Category Name");
+
 		}
 	}
 

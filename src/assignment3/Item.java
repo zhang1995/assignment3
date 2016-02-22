@@ -14,13 +14,15 @@ public class Item {
 	protected double price;
 	protected int quantity;
 	protected int weight;
-
+	//protected String item_type;
+	
 	// You will need a constructor (Why?). Create it here.
 	public Item() {
 		name = "";
 		price = 0;
 		quantity = 0;
 		weight = 0;
+		//item_type = "";
 	}
 
 	public Item(String name, double price, int quantity, int weight) {
@@ -29,6 +31,12 @@ public class Item {
 		this.quantity = quantity;
 		this.weight = weight;
 	}
+	
+	// get functions
+	public String getName(){return name;}
+	public double getPrice(){return price;}
+	public int getQuantity(){return quantity;}
+	public int getWeight(){return weight;}
 
 	//
 	public void update_quantity(int new_quantity) {
