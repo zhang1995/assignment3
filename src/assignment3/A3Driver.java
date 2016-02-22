@@ -44,10 +44,11 @@ public class A3Driver {
 	 */
 	private static void parseInput(String input) throws Exception {
 		// convert the input to an String array
-		String[] transaction = input.toLowerCase().split(" ");
+		String[] temp = input.toLowerCase().split(" ");
+		String[] transaction = input.split(" ");
 		// process base on the operation
 		try{
-			switch (transaction[0]) {
+			switch (temp[0]) {
 	
 			case "insert":
 				insert(transaction);
