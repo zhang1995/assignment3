@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class A3Driver {
-	// Stub for arraylist.
+	// Stub for ArrayList.
 	static ArrayList<Item> shoppingCart = new ArrayList<Item>();
 
 	public static void main(String[] args) {
@@ -123,7 +123,7 @@ public class A3Driver {
 		while (i.hasNext()) {
 			Item temp = i.next();
 			if (name.equals(temp.name)) {
-				total++;
+				total += temp.getQuantity();
 			}
 		}
 		System.out.println(total + " " + name + " found.");
@@ -174,6 +174,7 @@ public class A3Driver {
 		
 		System.out.println("");	/*start a new line*/
 		double sum = 0;
+		Collections.sort(shoppingCart, Item.itemNameComparator);
 		Iterator<Item> i = shoppingCart.iterator();
 		while (i.hasNext()) {
 			Item temp = i.next();

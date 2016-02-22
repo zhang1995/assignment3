@@ -2,8 +2,9 @@ package assignment3;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Comparator;;
 
-public class Item {
+public class Item{
 	
 	private double tax = 0.1;
 	static NumberFormat df = new DecimalFormat("#0.00");
@@ -54,5 +55,16 @@ public class Item {
 		System.out.format("Item: %s\n" + "Price: $%f\n" + "Quantity: %d\n" + "Weight: %d\n" + "Total Price: $%f\n\n", 
 				name, price, quantity, weight, calculatePrice());
 	}
+	
+	public static Comparator<Item> itemNameComparator = new Comparator<Item>(){
+		public int compare(Item i1, Item i2){
+			String itemName1 = i1.name.toLowerCase();
+			String itemName2 = i2.name.toLowerCase();
+			
+			/* ascending order */
+			return itemName1.compareTo(itemName2);
+		}
+		
+	};
 
 }
