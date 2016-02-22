@@ -47,7 +47,7 @@ public class Electronics extends Item {
 
 	void printItemAttributes() {
 		
-		System.out.format("Item: %s\n" + "Price: $%d\n" + "Quantity: %d\n" + "Weight: %d\n" +"Is_Fragile: %b\n"+"State: %s\n"+"Total Price: $%d\n", 
+		System.out.format("Item: %s, Price: $%f, Quantity: %d, Weight: %d, Is_Fragile: %b, State: %s, Total Price: $%f\n", 
 				name, price, quantity, weight, is_fragile, state, calculatePrice());
 	}
 

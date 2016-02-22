@@ -29,10 +29,15 @@ public class Item {
 		this.quantity = quantity;
 		this.weight = weight;
 	}
+	// get functions
+	public String getName(){return name;}
+	public double getPrice(){return price;}
+	public int getQuantity(){return quantity;}
+	public int getWeight(){return weight;}
+
 
 	//
 	public void update_quantity(int new_quantity) {
-		
 		this.quantity = new_quantity;
 	}
 
@@ -47,7 +52,7 @@ public class Item {
 
 	void printItemAttributes() {
 		// Print all applicable attributes of this class
-		System.out.format("Item: %s\n" + "Price: $%d\n" + "Quantity: %d\n" + "Weight: %d\n" + "Total Price: $%d\n", 
+		System.out.format("Item: %s\nPrice: $%f\nQuantity: %d\nWeight: %d\nTotal Price: $%f\n", 
 				name, price, quantity, weight, calculatePrice());
 	}
 
