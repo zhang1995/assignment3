@@ -7,16 +7,13 @@ import java.io.IOException;
 import java.util.*;
 
 public class A3Driver {
-
 	// Stub for arraylist.
 	static ArrayList<Item> shoppingCart = new ArrayList<Item>();
 
 	public static void main(String[] args) {
-
-		// Open file; file name specified in args (command line)
+		/*open file; given in command line*/
 		String fileName = args[0];
 		String line = null;
-
 		// Parse input, take appropriate actions.
 		try {
 			// FileReader reads text files in the default encoding
@@ -26,7 +23,6 @@ public class A3Driver {
 
 			while ((line = bufferedReader.readLine()) != null) {
 				parseInput(line);
-
 			}
 			// Always close file
 			bufferedReader.close();
@@ -37,16 +33,6 @@ public class A3Driver {
 		}catch (Exception e) {
 			System.err.println("Error: " + e.getMessage());
 		}
-		/*
-		 * // General code example for how to iterate an array list. You will
-		 * have to modify this heavily, to suit your needs. Iterator<Item> i =
-		 * shoppingCart.iterator(); while (i.hasNext()) { Item temp = i.next();
-		 * temp.calculatePrice(); temp.printItemAttributes(); //This (above)
-		 * works because of polymorphism: a determination is made at runtime,
-		 * //based on the inherited class type, as to which method is to be
-		 * invoked. Eg: If it is an instance // of Grocery, it will invoke the
-		 * calculatePrice () method defined in Grocery. }
-		 */
 	}
 
 	/**
@@ -85,54 +71,75 @@ public class A3Driver {
 			System.err.println("Error: " + e.getMessage());
 		}
 	}
-		
-		
-
+	
+	/**
+	 * 	insert the item 
+	 * 
+	 * @param transaction
+	 * @throws Exception
+	 */
 	public static void insert(String[] transaction) throws Exception {
 		Item new_item = CreatesNewItem.generate_new_item(transaction);
 		shoppingCart.add(new_item);
 
-		System.out.println("Inserted " + new_item.name + " into Shopping Cart.");
+		System.out.format("%d %s added to cart. $%f per item. Weight: %d.\n", 
+				new_item.getQuantity(), new_item.name, new_item.getPrice(), new_item.getWeight());
 	}
 
+	/**
+	 * 	delete a given item
+	 * 
+	 * @param transaction
+	 * @throws Exception
+	 */
 	public static void delete(String[] transaction) throws Exception {
-		int total = 0;
 		if (transaction.length != 2) {
 			throw new Exception("Incorrect transaction length");
 		}
+		int total = 0;
 		String name = transaction[1];
 		Iterator<Item> i = shoppingCart.iterator();
 		while (i.hasNext()) {
 			Item temp = i.next();
-			if (name.equals(temp.getName())) {
+			if (name.equals(temp.name)) {
+				total += temp.getQuantity();
 				i.remove();
-				total++;
 			}
 		}
-		System.out.println(total + " " + name + " deleted.");
+		System.out.format("%d %s deleted.\n", total, name);
 	}
-
+	/**	search for an item
+	 * 
+	 * @param transaction
+	 * @throws Exception
+	 */
 	public static void search(String[] transaction) throws Exception {
-		int total = 0;
 		if (transaction.length != 2) {
 			throw new Exception("Incorrect transaction length");
 		}
+		int total = 0;
 		String name = transaction[1];
 		Iterator<Item> i = shoppingCart.iterator();
 		while (i.hasNext()) {
 			Item temp = i.next();
-			if (name.equals(temp.getName())) {
+			if (name.equals(temp.name)) {
 				total++;
 			}
 		}
 		System.out.println(total + " " + name + " found.");
 	}
-
+	/**	update the quantity of a given item
+	 * 
+	 * @param transaction
+	 * 		- incorrect transactions length
+	 * 		- incorrect quantity input
+	 * @throws Exception
+	 */
 	public static void update(String[] transaction) throws Exception {
-		Iterator<Item> i = shoppingCart.iterator();
 		if (transaction.length != 3) {
-			throw new Exception("Incorrect transaction length");
+			throw new Exception("Incorrect Transaction Length");
 		}
+		Iterator<Item> i = shoppingCart.iterator();
 		String name = transaction[1];
 		int quantity = 0;
 		if (transaction[2].matches("[0-9]+")) {
@@ -143,7 +150,7 @@ public class A3Driver {
 		boolean succeed = false;
 		while (i.hasNext()) {
 			Item temp = i.next();
-			if (name.equals(temp.getName())) {
+			if (name.equals(temp.name)) {
 				temp.update_quantity(quantity);
 				succeed = true;
 			}
@@ -154,8 +161,18 @@ public class A3Driver {
 			System.out.println("Can't find the item!");
 		}
 	}
-
+	
+	/**	print out a summary for the shopping cart
+	 * 
+	 * @param transaction - the input transaction
+	 * @throws Exception
+	 */
 	public static void print(String[] transaction) throws Exception {
+		if (transaction.length != 1) {
+			throw new Exception("Incorrect transaction length");
+		}
+		
+		System.out.println("");	/*start a new line*/
 		double sum = 0;
 		Iterator<Item> i = shoppingCart.iterator();
 		while (i.hasNext()) {
