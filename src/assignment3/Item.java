@@ -14,13 +14,15 @@ public class Item {
 	protected double price;
 	protected int quantity;
 	protected int weight;
-
+	//protected String item_type;
+	
 	// You will need a constructor (Why?). Create it here.
 	public Item() {
 		name = "";
 		price = 0;
 		quantity = 0;
 		weight = 0;
+		//item_type = "";
 	}
 
 	public Item(String name, double price, int quantity, int weight) {
@@ -52,7 +54,7 @@ public class Item {
 
 	void printItemAttributes() {
 		// Print all applicable attributes of this class
-		System.out.format("Item: %s\nPrice: $%f\nQuantity: %d\nWeight: %d\nTotal Price: $%f\n", 
+		System.out.format("Item: %s\n" + "Price: $%f\n" + "Quantity: %d\n" + "Weight: %d\n" + "Total Price: $%f\n\n", 
 				name, price, quantity, weight, calculatePrice());
 	}
 
