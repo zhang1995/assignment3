@@ -27,7 +27,7 @@ public class Grocery extends Item {
 	
 void printItemAttributes() {
 		
-		System.out.format("Item: %s\n" + "Price: $%f\n" + "Quantity: %d\n" + "Weight: %d\n" +"Is_Perishable: %b\n" + "Total Price: $%f\n\n", 
+		System.out.format("Item: %s\n" + "Price: $%.2f\n" + "Quantity: %d\n" + "Weight: %d\n" +"Is_Perishable: %b\n" + "Total Price: $%.2f\n\n", 
 				name, price, quantity, weight, is_perishable, calculatePrice());
 	}
 

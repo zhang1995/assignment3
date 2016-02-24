@@ -1,11 +1,14 @@
-insert clothing shirt 20.50 100 1
-insert clothing polo 99.99 2 20
-insert groceries banana 0.99 2 2 P
-insert electronics GamingLaptop 20000 1 9 F TX
+insert clothing shirt 20.50 -100 1
+insert clothing polo 99.99 2 -20
+insert groceries banana -0.99 2 2 P
+insert groceries banAna 0.99 2 2 NP
+insert electronics GamingLaptop -20000 1 9 F TX
+insert electronics gamingLaptop 20000 1 9 F ss
 insert clothing shirt 10 5 1
 insert clothing shirt 5 1 1
+insert clothings shirt 5 1 1
 search shirt
 delete shirt
-update banana 99999
+
 search banana
 print

@@ -25,7 +25,7 @@ public class CreatesNewItem {
 		if (transaction.length < 6) {
 			throw new Exception("Incorrect Number of Elements In The Transaction");
 		}
-		name = transaction[2];//.toLowerCase();
+		name = transaction[2];
 		// check price
 		if (Pattern.matches(doublenumber, transaction[3]) || transaction[3].matches("[0-9]+")) {
 			price = (double) Double.parseDouble(transaction[3]);
@@ -100,6 +100,7 @@ public class CreatesNewItem {
 			return new Electronics(name, price, quantity, weight, is_fragile, state);
 		
 		default:
+			//if the category is other than the three catrgories throw an exception
 			throw new Exception("Incorrect Category Name");
 
 		}

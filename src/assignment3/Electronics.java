@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Electronics extends Item {
 
 	String[] tax_free_states = new String[] { "TX", "NM", "VA", "AZ", "AK" };
+	//this contain all the states and other territories a total of 
 	String[] us_states = new String[] { "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "GU", "HI",
 			"IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MH", "MI", "MN", "MO", "MS", "MT", "NC", "ND",
 			"NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "PW", "RI", "SC", "SD", "TN", "TX", "UT",
@@ -47,7 +48,7 @@ public class Electronics extends Item {
 
 	void printItemAttributes() {
 		
-		System.out.format("Item: %s\n" + "Price: $%f\n" + "Quantity: %d\n" + "Weight: %d\n" +"Is_Fragile: %b\n"+"State: %s\n"+"Total Price: $%f\n\n", 
+		System.out.format("Item: %s\n" + "Price: $%.2f\n" + "Quantity: %d\n" + "Weight: %d\n" +"Is_Fragile: %b\n"+"State: %s\n"+"Total Price: $%.2f\n\n", 
 				name, price, quantity, weight, is_fragile, state, calculatePrice());
 	}
 

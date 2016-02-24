@@ -83,7 +83,7 @@ public class A3Driver {
 		Item new_item = CreatesNewItem.generate_new_item(transaction);
 		shoppingCart.add(new_item);
 
-		System.out.format("%d %s added to cart. $%f per item. Weight: %d.\n", 
+		System.out.format("%d %s added to cart. $%.2f per item. Weight: %d.\n", 
 				new_item.getQuantity(), new_item.name, new_item.getPrice(), new_item.getWeight());
 	}
 
@@ -127,7 +127,8 @@ public class A3Driver {
 				total += temp.getQuantity();
 			}
 		}
-		System.out.println(total + " " + name + " found.");
+		System.out.printf("%d %s found.\n", total, name);
+		//System.out.println(total + " " + name + " found.");
 	}
 	/**	update the quantity of a given item
 	 * 
@@ -182,6 +183,6 @@ public class A3Driver {
 			sum += temp.calculatePrice();
 			temp.printItemAttributes();
 		}
-		System.out.println("The total amount of the items in shopping cart is: " + sum);
+		System.out.printf("The total amount of the items in shopping cart is: %.2f", sum);
 	}
 }
